@@ -18,6 +18,9 @@
 	#include <GL/glut.h>
 #endif
 
+#if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)  
+#include "ofAutoreleasePool.h"  
+#endif // defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)  
 
 // glut works with static callbacks UGH, so we need static variables here:
 
@@ -315,6 +318,10 @@ void ofAppGlutWindow::initializeWindow(){
 void ofAppGlutWindow::runAppViaInfiniteLoop(ofBaseApp * appPtr){
 	ofAppPtr = appPtr;
 
+	#if defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)  
+	ofAutoreleasePool pool;  
+	#endif // defined(TARGET_OSX) || defined(TARGET_OF_IPHONE) 
+	
 	ofNotifySetup();
 	ofNotifyUpdate();
 
