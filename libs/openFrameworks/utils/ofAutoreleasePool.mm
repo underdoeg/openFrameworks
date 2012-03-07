@@ -13,7 +13,7 @@ pool(NULL)
 
 ofAutoreleasePool::~ofAutoreleasePool() {  
     [reinterpret_cast<NSAutoreleasePool*>(pool) drain];  
-    pool = NULL;  
+    pool = NULL;
 }  
 
 #endif // defined(TARGET_OSX) || defined(TARGET_OF_IPHONE)  

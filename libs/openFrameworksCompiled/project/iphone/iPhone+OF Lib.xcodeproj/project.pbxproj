@@ -174,6 +174,8 @@
 		E485F8B513632A7300E939D3 /* AVFoundationVideoGrabber.mm in Sources */ = {isa = PBXBuildFile; fileRef = E485F8B313632A7300E939D3 /* AVFoundationVideoGrabber.mm */; };
 		E485F8C713632B6600E939D3 /* AVFoundationVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E485F8C513632B6600E939D3 /* AVFoundationVideoPlayer.h */; };
 		E485F8C813632B6600E939D3 /* AVFoundationVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E485F8C613632B6600E939D3 /* AVFoundationVideoPlayer.mm */; };
+		FA18A1FC15078BB2005ED408 /* ofAutoreleasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = FA18A1FA15078BB2005ED408 /* ofAutoreleasePool.h */; };
+		FA18A1FD15078BB2005ED408 /* ofAutoreleasePool.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA18A1FB15078BB2005ED408 /* ofAutoreleasePool.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,7 +197,7 @@
 		772C251B146927A400DDAAE6 /* ofFmodSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofFmodSoundPlayer.h; sourceTree = "<group>"; };
 		BB16EBD10F2B2A9500518274 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BB16EBD80F2B2AB500518274 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BB24DED610DA7A3F00E9C588 /* libofxiPhone_iphonesimulator_Debug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libofxiPhone_iphonesimulator_Debug.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB24DED610DA7A3F00E9C588 /* libofxiPhone_macosx_Debug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libofxiPhone_macosx_Debug.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB24E01D10DA7C6100E9C588 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = changelog.txt; sourceTree = "<group>"; };
 		BB24E01E10DA7C6100E9C588 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
 		BB24E01F10DA7C6100E9C588 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -354,6 +356,8 @@
 		E485F8B313632A7300E939D3 /* AVFoundationVideoGrabber.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AVFoundationVideoGrabber.mm; path = ../../../../addons/ofxiPhone/src/AVFoundationVideoGrabber.mm; sourceTree = SOURCE_ROOT; };
 		E485F8C513632B6600E939D3 /* AVFoundationVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVFoundationVideoPlayer.h; path = ../../../../addons/ofxiPhone/src/AVFoundationVideoPlayer.h; sourceTree = SOURCE_ROOT; };
 		E485F8C613632B6600E939D3 /* AVFoundationVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AVFoundationVideoPlayer.mm; path = ../../../../addons/ofxiPhone/src/AVFoundationVideoPlayer.mm; sourceTree = SOURCE_ROOT; };
+		FA18A1FA15078BB2005ED408 /* ofAutoreleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofAutoreleasePool.h; sourceTree = "<group>"; };
+		FA18A1FB15078BB2005ED408 /* ofAutoreleasePool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofAutoreleasePool.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,7 +387,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB24DED610DA7A3F00E9C588 /* libofxiPhone_iphonesimulator_Debug.a */,
+				BB24DED610DA7A3F00E9C588 /* libofxiPhone_macosx_Debug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -700,6 +704,8 @@
 		E485F6E71360A90000E939D3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA18A1FA15078BB2005ED408 /* ofAutoreleasePool.h */,
+				FA18A1FB15078BB2005ED408 /* ofAutoreleasePool.mm */,
 				E485F6E81360A90000E939D3 /* ofConstants.h */,
 				E485F6E91360A90000E939D3 /* ofFileUtils.cpp */,
 				E485F6EA1360A90000E939D3 /* ofFileUtils.h */,
@@ -847,6 +853,7 @@
 				5315964A13D88B370044EAFE /* ofxiPhoneSoundStream.h in Headers */,
 				772C25191469274B00DDAAE6 /* ofOpenALSoundPlayer.h in Headers */,
 				772C251D146927A500DDAAE6 /* ofFmodSoundPlayer.h in Headers */,
+				FA18A1FC15078BB2005ED408 /* ofAutoreleasePool.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,7 +874,7 @@
 			);
 			name = "iPhone+OF Static Library";
 			productName = "Static Library";
-			productReference = BB24DED610DA7A3F00E9C588 /* libofxiPhone_iphonesimulator_Debug.a */;
+			productReference = BB24DED610DA7A3F00E9C588 /* libofxiPhone_macosx_Debug.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -877,7 +884,6 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iPhone+OF Lib" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -968,6 +974,7 @@
 				5315964913D88B370044EAFE /* ofxiPhoneSoundStream.mm in Sources */,
 				772C25181469274B00DDAAE6 /* ofOpenALSoundPlayer.cpp in Sources */,
 				772C251C146927A500DDAAE6 /* ofFmodSoundPlayer.cpp in Sources */,
+				FA18A1FD15078BB2005ED408 /* ofAutoreleasePool.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
