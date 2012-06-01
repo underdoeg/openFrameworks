@@ -69,9 +69,9 @@ void testApp::setup(){
 	examplesPanel.add(wincbToggle.setup("win CB projects",ofGetTargetPlatform()==OF_TARGET_WINGCC, examplesWidth));
 	examplesPanel.add(winvsToggle.setup("win VS projects", ofGetTargetPlatform()==OF_TARGET_WINVS, examplesWidth));
 	examplesPanel.add(linuxcbToggle.setup("linux CB projects",ofGetTargetPlatform()==OF_TARGET_LINUX, examplesWidth));
-    examplesPanel.add(linuxcodeliteToggle.setup("linux CodeLite projects",ofGetTargetPlatform()==OF_TARGET_LINUX, examplesWidth));
+    examplesPanel.add(linuxcodeliteToggle.setup("linux CodeLite projects",false, examplesWidth));
 	examplesPanel.add(linux64cbToggle.setup("linux64 CB projects",ofGetTargetPlatform()==OF_TARGET_LINUX64, examplesWidth));
-    examplesPanel.add(linux64codeliteToggle.setup("linux64 CodeLite projects",ofGetTargetPlatform()==OF_TARGET_LINUX64, examplesWidth));
+    examplesPanel.add(linux64codeliteToggle.setup("linux64 CodeLite projects",false, examplesWidth));
 	examplesPanel.add(osxToggle.setup("osx projects",ofGetTargetPlatform()==OF_TARGET_OSX, examplesWidth));
 	examplesPanel.add(iosToggle.setup("ios projects",ofGetTargetPlatform()==OF_TARGET_IPHONE, examplesWidth));
 
@@ -318,7 +318,11 @@ void testApp::createAndOpenPressed(bool & pressed){
 		ofFileDialogResult res = makeNewProjectViaDialog();
 		if(res.bSuccess){
 			#ifdef TARGET_LINUX
-				system(("/usr/bin/codeblocks " + ofFilePath::join(res.filePath, res.fileName+".workspace ") + "&").c_str());
+                if(linux64codeliteToggle || linuxcodeliteToggle){
+                    system(("/usr/bin/codelite " + ofFilePath::join(res.filePath, res.fileName+".codelite.workspace ") + "&").c_str());
+                }else{
+                    system(("/usr/bin/codeblocks " + ofFilePath::join(res.filePath, res.fileName+".workspace ") + "&").c_str());
+                }
 			#elif defined(TARGET_OSX)
 				system(("open " + ofFilePath::join(res.filePath, res.fileName+".xcodeproj ") + "&").c_str());
 			#elif defined(TARGET_WIN32)

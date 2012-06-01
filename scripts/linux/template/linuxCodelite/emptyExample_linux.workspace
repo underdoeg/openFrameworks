@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Workspace Name="emptyExample_linux" Database="./emptyExample_linux.tags">
+  <Project Name="emptyExample_linux" Path="emptyExample_linux.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Project Name="emptyExample_linux" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="emptyExample_linux" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

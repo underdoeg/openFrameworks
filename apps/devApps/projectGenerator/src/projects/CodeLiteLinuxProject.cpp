@@ -75,10 +75,10 @@ bool CodeLiteLinuxProject::createProjectFile(){
 
     // handle the relative roots.
     string relRoot = getOFRelPath(ofFilePath::removeTrailingSlash(projectDir));
-    if (relRoot != "../../../../"){
+    if (relRoot != "../../../"){
         string relPath2 = relRoot;
         relPath2.erase(relPath2.end()-1);
-        findandreplaceInTexfile(projectDir + "config.make", "../../../../", relPath2);
+        findandreplaceInTexfile(projectDir + "config.make", "../../..", relPath2);
         findandreplaceInTexfile(ofFilePath::join(projectDir , projectName + ".codelite.workspace"), "../../../", relRoot);
         findandreplaceInTexfile(ofFilePath::join(projectDir , projectName + ".codelite.project"), "../../../", relRoot);
     }
@@ -109,9 +109,30 @@ bool CodeLiteLinuxProject::saveProjectFile(){
 }
 
 void CodeLiteLinuxProject::addSrc(string srcFile, string folder){
-	pugi::xml_node node = appendValue(doc, "Unit", "filename", srcFile);
+    std::vector<string> path = ofSplitString(folder, "/");
+    pugi::xml_node node = doc.child("CodeLite_Project");
+    for(unsigned int i=0;i<path.size();i++){
+        string folder = path[i];
+        if(folder != ".."){
+            pugi::xml_node newNode = node.find_child_by_attribute("VirtualDirectory", "Name", folder.c_str());
+            if(newNode == NULL){
+                newNode = node.append_child();
+                newNode.set_name("VirtualDirectory");
+                pugi::xml_attribute nameAttr = newNode.append_attribute("Name");
+                nameAttr.set_value(folder.c_str());
+            }
+            node = newNode;
+        }
+    }
+
+    pugi::xml_node fileNode = node.append_child();
+    fileNode.set_name("File");
+    pugi::xml_attribute fileAttr = fileNode.append_attribute("Name");
+    string fullPath = folder+srcFile;
+    fileAttr.set_value(fullPath.c_str());
+	/*pugi::xml_node node = appendValue(doc, "Unit", "filename", srcFile);
 	if(!node.empty()){
 		node.child("Option").attribute("virtualFolder").set_value(folder.c_str());
-	}
-    //doc.save_file((projectDir + projectName + ".cbp").c_str());
+	}*/
+    doc.save_file((projectDir + projectName + ".codelite.project").c_str());
 }
