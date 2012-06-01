@@ -63,14 +63,17 @@ void testApp::setup(){
     createAndOpen.addListener(this,&testApp::createAndOpenPressed);
     changeOFRoot.addListener(this,&testApp::changeOFRootPressed);
 
-	examplesPanel.setup("generate examples", "examples.xml", 400, 10);
-	examplesPanel.add(generateButton.setup("<--Generate"));
-	examplesPanel.add(wincbToggle.setup("win CB projects",ofGetTargetPlatform()==OF_TARGET_WINGCC));
-	examplesPanel.add(winvsToggle.setup("win VS projects", ofGetTargetPlatform()==OF_TARGET_WINVS));
-	examplesPanel.add(linuxcbToggle.setup("linux CB projects",ofGetTargetPlatform()==OF_TARGET_LINUX));
-	examplesPanel.add(linux64cbToggle.setup("linux64 CB projects",ofGetTargetPlatform()==OF_TARGET_LINUX64));
-	examplesPanel.add(osxToggle.setup("osx projects",ofGetTargetPlatform()==OF_TARGET_OSX));
-	examplesPanel.add(iosToggle.setup("ios projects",ofGetTargetPlatform()==OF_TARGET_IPHONE));
+    int examplesWidth = 225;
+	examplesPanel.setup("generate examples", "examples.xml", 350, 10);
+	examplesPanel.add(generateButton.setup("<--Generate", examplesWidth));
+	examplesPanel.add(wincbToggle.setup("win CB projects",ofGetTargetPlatform()==OF_TARGET_WINGCC, examplesWidth));
+	examplesPanel.add(winvsToggle.setup("win VS projects", ofGetTargetPlatform()==OF_TARGET_WINVS, examplesWidth));
+	examplesPanel.add(linuxcbToggle.setup("linux CB projects",ofGetTargetPlatform()==OF_TARGET_LINUX, examplesWidth));
+    examplesPanel.add(linuxcodeliteToggle.setup("linux CodeLite projects",ofGetTargetPlatform()==OF_TARGET_LINUX, examplesWidth));
+	examplesPanel.add(linux64cbToggle.setup("linux64 CB projects",ofGetTargetPlatform()==OF_TARGET_LINUX64, examplesWidth));
+    examplesPanel.add(linux64codeliteToggle.setup("linux64 CodeLite projects",ofGetTargetPlatform()==OF_TARGET_LINUX64, examplesWidth));
+	examplesPanel.add(osxToggle.setup("osx projects",ofGetTargetPlatform()==OF_TARGET_OSX, examplesWidth));
+	examplesPanel.add(iosToggle.setup("ios projects",ofGetTargetPlatform()==OF_TARGET_IPHONE, examplesWidth));
 
 	generateButton.addListener(this,&testApp::generateExamplesCB);
 
@@ -115,6 +118,14 @@ void testApp::setupForTarget(int targ){
             project = new CBLinuxProject;
             target = "linux64";
             break;
+     case OF_TARGET_LINUX_CODELITE:
+            project = new CodeLiteLinuxProject;
+            target = "linux";
+            break;
+     case OF_TARGET_LINUX64_CODELITE:
+            project = new CodeLiteLinuxProject;
+            target = "linux64";
+            break;
     }
 }
 
@@ -130,6 +141,8 @@ void testApp::generateExamplesCB(bool & pressed){
 	if( winvsToggle )	targetsToMake.push_back(OF_TARGET_WINVS);
 	if( linuxcbToggle )	targetsToMake.push_back(OF_TARGET_LINUX);
 	if( linux64cbToggle )	targetsToMake.push_back(OF_TARGET_LINUX64);
+	if( linux64codeliteToggle )	targetsToMake.push_back(OF_TARGET_LINUX_CODELITE);
+	if( linuxcodeliteToggle )	targetsToMake.push_back(OF_TARGET_LINUX64_CODELITE);
 
 	if( targetsToMake.size() == 0 ){
 		cout << "Error: generateExamplesCB - must specifiy a project to generate " <<endl;
@@ -211,6 +224,8 @@ ofFileDialogResult testApp::makeNewProjectViaDialog(){
 	if( winvsToggle )	targetsToMake.push_back(OF_TARGET_WINVS);
 	if( linuxcbToggle )	targetsToMake.push_back(OF_TARGET_LINUX);
 	if( linux64cbToggle )	targetsToMake.push_back(OF_TARGET_LINUX64);
+    if( linuxcodeliteToggle )	targetsToMake.push_back(OF_TARGET_LINUX_CODELITE);
+	if( linux64codeliteToggle )	targetsToMake.push_back(OF_TARGET_LINUX64_CODELITE);
 
 	if( targetsToMake.size() == 0 ){
 		cout << "Error: makeNewProjectViaDialog - must specifiy a project to generate " <<endl;
@@ -255,6 +270,8 @@ ofFileDialogResult testApp::updateProjectViaDialog(){
 	if( winvsToggle )	targetsToMake.push_back(OF_TARGET_WINVS);
 	if( linuxcbToggle )	targetsToMake.push_back(OF_TARGET_LINUX);
 	if( linux64cbToggle )	targetsToMake.push_back(OF_TARGET_LINUX64);
+    if( linuxcodeliteToggle )	targetsToMake.push_back(OF_TARGET_LINUX_CODELITE);
+	if( linux64codeliteToggle )	targetsToMake.push_back(OF_TARGET_LINUX64_CODELITE);
 
 	if( targetsToMake.size() == 0 ){
 		cout << "Error: updateProjectViaDialog - must specifiy a project to generate " <<endl;

@@ -39,6 +39,8 @@
 		<Unit filename="src/projects/CBLinuxProject.h" />
 		<Unit filename="src/projects/CBWinProject.cpp" />
 		<Unit filename="src/projects/CBWinProject.h" />
+		<Unit filename="src/projects/CodeLiteLinuxProject.cpp" />
+		<Unit filename="src/projects/CodeLiteLinuxProject.h" />
 		<Unit filename="src/projects/baseProject.cpp" />
 		<Unit filename="src/projects/baseProject.h" />
 		<Unit filename="src/projects/visualStudioProject.cpp" />
